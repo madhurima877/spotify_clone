@@ -65,7 +65,7 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
     element.addEventListener('click', (e)=>{ 
         makeAllPlays();
         songIndex = parseInt(e.target.id);
-        if(audioElement.paused)
+     if(audioElement.paused)
        { e.target.classList.remove('fa-play-circle');
         e.target.classList.add('fa-pause-circle');
         audioElement.src = `songs/${songIndex+1}.mp3`;
@@ -74,7 +74,9 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
         audioElement.play();
         gif.style.opacity = 1;
         masterPlay.classList.remove('fa-play-circle');
-        masterPlay.classList.add('fa-pause-circle');}
+        masterPlay.classList.add('fa-pause-circle');
+      
+    }
         else{
            audioElement.pause();
         masterPlay.classList.remove('fa-pause-circle');
@@ -114,3 +116,46 @@ document.getElementById('previous').addEventListener('click', ()=>{
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
 })
+
+document.getElementById('keepplaying').addEventListener('click',()=>{
+    songIndex=Math.floor(Math.random()*songs.length);
+    audioElement.src = `songs/${songIndex+1}.mp3`;
+    masterSongName.innerText = songs[songIndex].songName;
+    audioElement.currentTime = 0;
+    audioElement.play();
+    masterPlay.classList.remove('fa-play-circle');
+    masterPlay.classList.add('fa-pause-circle');
+
+})
+
+
+// myProgressBar.addEventListener('ended', function(){
+//     songIndex=0;
+//     audioElement.src = `songs/${songIndex+1}.mp3`;
+//     masterSongName.innerText = songs[songIndex].songName;
+//     audioElement.currentTime = 0;
+//     audioElement.play();
+//     masterPlay.classList.remove('fa-play-circle');
+//     masterPlay.classList.add('fa-pause-circle');
+//     songIndex++;  
+//   audioElement.load();
+//  songIndex++;
+//   if(songIndex>=songs.length){
+//       songIndex=0;
+//   }
+// });
+
+// myProgressBar.addEventListener('ended', ()=>{
+//     songIndex=0;
+//     while(songIndex<=9){
+//         audioElement.src = `songs/${songIndex+1}.mp3`;
+//         masterSongName.innerText = songs[songIndex].songName;
+//         audioElement.currentTime = 0;
+//         audioElement.play();
+//         masterPlay.classList.remove('fa-play-circle');
+//         masterPlay.classList.add('fa-pause-circle');
+//         songIndex++;  
+//     }
+  
+
+// })
